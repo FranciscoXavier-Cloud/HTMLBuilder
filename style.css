@@ -1,0 +1,141 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+body{
+    background-color: #6b8eb7;
+    color: #333;
+    padding: 2rem;
+}
+
+.app-container{
+    display: flex;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+/*Paneles izquierdo y derecho*/
+.panel-controles, .panel-visual{
+    background-color: #f4f6f9;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.panel-controles{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    max-height: 85vh;
+    overflow-y: auto; /*Permite hacer scroll en los controles si es necesario*/
+}
+
+.panel-visual{
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+}
+
+h2{
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+/*Grupos de controles*/
+.control-grupo{
+    background: #e9edf2;
+    padding: 0.8rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.control-grupo label{
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #4a5568;
+}
+
+input[type="text"], textarea{
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background: #fff;
+}
+
+.alineación, .tipo-lista{
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    align-items: center;
+}
+
+.input-item-lista{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.lista-items-temp{
+    max-height: 80px;
+    overflow-y: auto;
+    background: #fff;
+    padding: 0.3rem 1.2rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+/*Botones estilo robusto/retro del boceto*/
+button{
+    cursor: pointer;
+    font-weight: bold;
+    border: 2px solid #000;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 2px 2px 0 #000;
+    transition: transform 0.1s, box-shadow  0.1s;
+}
+
+button:active{
+    transform: translate(2px,2px);
+    box-shadow: 0px 0px 0px #000;
+}
+
+.btn-ingresar, .btn-secundario{
+    padding: 0.4rem 1rem;
+    align-self: flex-start;
+    font-size: 0.85rem;
+}
+
+/*Lienzo de la vista previa*/
+.canvas-preview{
+    flex-grow: 1;
+    background: #fff;
+    border: 2px dashed #94a3b8;
+    border-radius: 8px;
+    padding: 1.5rem;
+    min-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+
+.btn-descargar-archivo{
+    padding: 0.8rem;
+    background-color: #2b6cb0;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: 3px 3px 0px #000;
+}
+
+#vista-previa li, .vista-previa li {
+    color: #333333; /* O el color oscuro que estés usando para tus textos */
+}

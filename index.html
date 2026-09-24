@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de plantillas HTML</title>
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <main class="app-container">
+      <!--Columna izquierda PANEL DE CONTROL-->
+      <section class="panel-controles">
+	<h2>Panel de creación</h2>
+
+	<!--Encabezado principal (H1)-->
+	<div class="control-grupo">
+	  <label for="input-h1">Encabezado Principal</label>
+	  <input type="text" id="input-h1" placeholder="Escribe el título principal" >
+	  <div class="alineación" >
+	    <label><input type="radio" name="align-h1" value="left" checked >Izquierda</label>
+	    <label><input type="radio" name="align-h1" value="center">Centro</label>
+	    <label><input type="radio" name="align-h1" value="right">Derecha</label>
+	  </div>
+	  <button id="btn-h1" class="button-ingresar">Ingresar</button>
+	</div>
+
+	<!--Encabezado secundario (H2)-->
+	<div class="control-grupo">
+	  <label for="input-h2">Encabezado secundario</label>
+	  <input type="text" id="input-h2" placeholder="Escribe el subtitulo">
+	  <div class="alineación">
+	    <label><input type="radio" name="align-h2" value="left" checked >Izquierda</label>
+	    <label><input type="radio" name="align-h2" value="center">Centro</label>
+	    <label><input type="radio" name="align-h2" value="right">Derecha</label>
+	  </div>
+	  <button id="btn-h2" class="button-ingresar">Ingresar</button>
+	</div>
+
+	<!--3 Imagen(URL o archivo)-->
+	<div class="control-grupo">
+	  <label for="input-img">Imagen (Arrastra archivo o ingresa URL)</label>
+	  <input type="text" id="input-img" placeholder="URL de la imagen o archivo">
+	  <div class="alineacion">
+	    <label><input type="radio" name="align-img" value="left" checked>Izquierda</label>
+	    <label><input type="radio" name="align-img" value="center">Centro</label>
+	    <label><input type="radio" name="align-img" value="right">Derecha</label>
+	  </div>
+	  <button id="btn-img" class="button-ingresar">Ingresar</button>
+	</div>
+
+	<!--4 Parrafo-->
+	<div class="control-grupo">
+	  <label for="input-p">Ingresar parrafo</label>
+	  <textarea id="input-p" rows="3" placeholder="Escribe tu parrafo aqui"></textarea>
+	  <div class="alineacion">
+	    <label><input type="radio" name="align-p" value="left" checked>Izquierda</label>
+	    <label><input type="radio" name="align-p" value="center">Centro</label>
+	    <label><input type="radio" name="align-p" value="right">Derecha</label>
+	  </div>
+	  <button id="btn-p" class="button-ingresar">Ingresar</button>
+	</div>
+
+	<!--5 Listas (ul/ol)-->
+	<div class="control-grupo">
+	  <label>Añadir lista</label>
+	  <div class="tipo-lista">
+	    <label><input type="radio" name="tipo-lista" value="ul" checked>ul (Desordenada)</label>
+	    <label><input type="radio" name="tipo-lista" value="ol">ol (Ordenada)</label>
+	  </div>
+
+	  <div class="input-item-lista">
+	    <input type="text" id="input-item-lista" placeholder="Ingresar Item">
+	    <button id="btn-agregar-item" class="btn-secundario">Añadir</button>
+	  </div>
+	  <ul id="lista-temporal-ul" class="lista-items-temp">
+	    <!--Aqui se iran listando los items antes de ingresarlos-->
+	  </ul>
+	  <div class="alineacion">
+	    <label><input type="radio" name="align-lista" value="left" checked>Izquierda</label>
+	    <label><input type="radio" name="align-lista" value="center">Centro</label>
+	    <label><input type="radio" name="align-lista" value="right">Derecha</label>
+	  </div>
+	  <button id="btn-generar-lista" class="btn-ingresar">Ingresar</button>
+	</div>
+      </section>
+      
+      <!--Columna derecha VISTA PREVIA Y EXPORTACIÓN-->
+      <section class="panel-visual" >
+	<h2>Vista Previa</h2>
+	<div id="vista-previa" class="canvas-preview">
+	  <!--Los elementos iran apareciendo aqui de manera dinámica-->
+	</div>
+	<button id="btn-descargar" class="btn-descargar-archivo">Descargar archivo HTML</button>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
