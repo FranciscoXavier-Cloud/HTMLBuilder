@@ -30,7 +30,7 @@ body{
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-    max-height: 85vh;
+    max-height: 110vh;
     overflow-y: auto; /*Permite hacer scroll en los controles si es necesario*/
 }
 
@@ -134,6 +134,18 @@ button:active{
     border-radius: 8px;
     font-size: 1rem;
     box-shadow: 3px 3px 0px #000;
+    margin: 0.3rem;
+}
+
+.grupo-botones-historial{
+    display: flex;
+    gap: 10px; /*Espacio de separación entre Undo y Redo*/
+    margin-bottom:10px;
+    width: 100%;
+}
+
+.grupo-botones-historial button{
+    flex: 1; /*Hace que cada boton ocupe exactamente el 50% del ancho disponible*/
 }
 
 #vista-previa li, .vista-previa li {

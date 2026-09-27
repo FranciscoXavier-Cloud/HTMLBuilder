@@ -47,6 +47,7 @@ btnH1.addEventListener("click", function(){
 
     //Inyectamos el elemento creado dentro del contenedor de vista previa
     vistaPrevia.appendChild(nuevoH1);
+    registrarAccionEnHistorial(nuevoH1); // <-- ¡Con esto se registra automáticamente!
 
     //Limpiamos el campo de texto después d eingresarlo
     inputH1.value="";
@@ -71,6 +72,7 @@ btnH2.addEventListener("click", function(){
 
     //Inyectamos el elemento creado dentro del contenedor de vista previa
     vistaPrevia.appendChild(nuevoH2);
+    registrarAccionEnHistorial(nuevoH2); // <-- ¡Con esto se registra automáticamente!
 
     //Limpiamos el campo de texto despúes de haberlo ingresado
     inputH2.value="";
@@ -128,6 +130,7 @@ btnIMG.addEventListener("click",function(){
     //Agregamos la iamgen al contenedor y este a la vista previa
     contenedorIMG.appendChild(nuevaIMG);
     vistaPrevia.appendChild(contenedorIMG);
+    registrarAccionEnHistorial(contenedorIMG); // <-- ¡Con esto se registra automáticamente!
 
     //Limpiamos el campo de texto tras ingresar la imagen
     inputIMG.value="";
@@ -153,6 +156,7 @@ btnP.addEventListener("click",function(){
 
     //Inyectamos el elemento creado dentro del contenedor de vista previa
     vistaPrevia.appendChild(nuevoP);
+    registrarAccionEnHistorial(nuevoP); // <-- ¡Con esto se registra automáticamente!
 
     //Limpiamos el campo de texto después de ingresarlo
     inputP.value="";
@@ -212,6 +216,7 @@ btnGenerarLista.addEventListener("click", function(){
 
     //Inyectamos la lista completa a la vista previa
     vistaPrevia.appendChild(nuevaLista);
+    registrarAccionEnHistorial(nuevaLista);
 
     //Limpiamos todo para reiniciar el proceso de listas
     itemsAcumulados = [];
@@ -291,4 +296,52 @@ btnDescargar.addEventListener("click", function(){
 
     //Liberamos la URL temporal de la memoria
     URL.revokeObjectURL(urlTemporal);
+});
+
+
+//9.LÓGICA DE UNDO Y REDO (HISTORIAL)
+const undoStack = [];
+const redoStack = [];
+
+const btnUndo = document.getElementById("btn-undo");
+const btnRedo = document.getElementById("btn-redo");
+
+//Función auxiliar para registrarr nuevos elementos creados
+function registrarAccionEnHistorial(elemento){
+    undoStack.push(elemento);
+    redoStack.length = 0; //Al hacer una nueva acción limpiamos el stack de redo
+}
+
+//Lógica del boton "Undo" (deshacer)
+btnUndo.addEventListener("click", function(){
+    if(undoStack.length===0){
+	return; //No hay acciones que deshacer
+    }
+
+    //Sacamos el último elemento de la pila de Undo
+    const elementoRemovido = undoStack.pop();
+
+    //Lo guardamos en la pila de redo por si el ususario quiere rehacerlo
+    redoStack.push(elementoRemovido);
+
+    //Lo removemos visualmente d ela vista previa
+    if(elementoRemovido.parentNode===vistaPrevia){
+	vistaPrevia.removeChild(elementoRemovido);
+    }
+});
+
+//Lógica del boton "Redo" (Rehacer)
+btnRedo.addEventListener("click", function(){
+    if(redoStack.length===0){
+	return; //No hay acciones que rehacer
+    }
+
+    //Sacamos el último elemento de la pila de redo
+    const elementoRestaurado = redoStack.pop();
+
+    //Lo regresamos a la pila de undo
+    undoStack.push(elementoRestaurado);
+
+    //Lo volvemos a mostrar en la vista previa
+    vistaPrevia.appendChild(elementoRestaurado);
 });
